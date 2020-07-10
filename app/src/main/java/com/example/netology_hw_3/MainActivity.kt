@@ -15,10 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val post = Post(
-            "1594421723", "Jon", "Целиндр конец головы",
+            "1594421723", "Александр Сергеевич Пушкин", "Надев широкий боливар, " +
+                    "Онегин едет на бульвар.",
             2, 100, 67, true, false, true
         )
-
 
         createdTv.text = timing(post)
         authorTv.text = post.authorName
@@ -55,8 +55,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
 
     @SuppressLint("SimpleDateFormat")
     private fun timing(post:Post): String {
