@@ -13,11 +13,9 @@
         android:layout_margin="16dp"
         android:background="#FFFFFF"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/avatarIv"
@@ -25,7 +23,7 @@
             android:layout_height="48dp"
             android:src="@drawable/hat"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -44,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:ellipsize="end"
             android:width="160dp"
+            android:ellipsize="end"
             android:singleLine="true"
             android:textColor="#000000"
             android:textSize="14sp"
