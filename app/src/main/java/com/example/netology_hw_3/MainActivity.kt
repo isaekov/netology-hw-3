@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         authorTv.text = post.authorName
         contentTv.text = post.content
 
+
         if (post.likeCount > 0) {
             likeCountTv.text = post.likeCount.toString()
             if (post.likeMe) {
@@ -38,6 +39,13 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             likeCountTv.visibility = View.GONE
+        }
+
+        likeCountTv.setOnClickListener {
+            if (!post.likeMe) {
+                likeIv.setImageResource(R.drawable.ic_baseline_favorite_active)
+                likeCountTv.setTextColor(Color.RED)
+            }
         }
 
         if (post.commentCount > 0) {
