@@ -15,9 +15,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val post = Post(
-            "1594421723", "Александр Сергеевич Пушкин", "Надев широкий боливар, " +
-                    "Онегин едет на бульвар.",
-            2, 100, 67, true, false, true
+            createDate = "1594421723",
+            authorName = "Александр Сергеевич Пушкин",
+            content = "Надев широкий боливар, Онегин едет на бульвар.",
+            likeCount = 2,
+            commentCount = 100,
+            shareCount = 67,
+            likeMe = true,
+            commentMe = false,
+            shareMe = true
         )
 
         createdTv.text = timing(post)
