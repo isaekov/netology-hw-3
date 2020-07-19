@@ -1,7 +1,10 @@
 package com.example.netology_hw_3
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
+import android.location.Location
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,13 +21,23 @@ class MainActivity : AppCompatActivity() {
             createDate = "1594421723",
             authorName = "Александр Сергеевич Пушкин",
             content = "Надев широкий боливар, Онегин едет на бульвар.",
-            likeCount = 2,
+            likeCount = 1,
             commentCount = 100,
             shareCount = 67,
             likeMe = true,
             commentMe = false,
-            shareMe = true
+            shareMe = true,
+            address = "Hollywood",
+            coordinates = Pair(55.753960, 37.620393)
         )
+
+        location.setOnClickListener{
+            val intent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse("geo:${post.coordinates.first},${post.coordinates.second}")            }
+            startActivity(intent)
+        }
+
 
         createdTv.text = timing(post)
         authorTv.text = post.authorName
@@ -41,12 +54,31 @@ class MainActivity : AppCompatActivity() {
             likeCountTv.visibility = View.GONE
         }
 
-        likeCountTv.setOnClickListener {
-            if (!post.likeMe) {
+
+        likeIv.setOnClickListener {
+
+            if (post.likeMe) {
+                likeIv.setImageResource(R.drawable.ic_baseline_favorite_disabled)
+                likeCountTv.setTextColor(Color.DKGRAY)
+                post.likeMe = false
+                post.likeCount --
+                likeCountTv.text = post.likeCount.toString()
+                if (post.likeCount < 1) {
+                    likeCountTv.visibility = View.GONE
+                }
+            } else {
                 likeIv.setImageResource(R.drawable.ic_baseline_favorite_active)
                 likeCountTv.setTextColor(Color.RED)
+                post.likeCount ++
+                if (!likeCountTv.isShown) {
+                    likeCountTv.visibility = View.VISIBLE
+                }
+                likeCountTv.text = post.likeCount.toString()
+                post.likeMe = true
+
             }
         }
+
 
         if (post.commentCount > 0) {
             commentCountTv.text = post.commentCount.toString()
