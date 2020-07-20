@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val helper = Helper();
+    private val helper = Helper()
     private lateinit var post: Post
 
     override fun onCreate(savedInstanceState: Bundle?) {
