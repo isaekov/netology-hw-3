@@ -1,23 +1,28 @@
 package com.example.netology_hw_3
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
-import android.location.Location
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.netology_hw_3.entity.Article
+import com.example.netology_hw_3.entity.Post
+import com.example.netology_hw_3.entity.PostEvent
+import com.example.netology_hw_3.util.CoordinateLocation
+import com.example.netology_hw_3.util.Helper
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val helper = Helper();
+    private lateinit var post: Post
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val post = Post(
+        val postEvent = PostEvent(
             createDate = "1594421723",
             authorName = "Александр Сергеевич Пушкин",
             content = "Надев широкий боливар, Онегин едет на бульвар.",
@@ -27,23 +32,33 @@ class MainActivity : AppCompatActivity() {
             likeMe = true,
             commentMe = false,
             shareMe = true,
-            address = "Hollywood",
-            coordinates = Pair(55.753960, 37.620393)
+            address = "Казань",
+            coordinates = CoordinateLocation(latitude = "55.798551", longitude =  "49.106324")
         )
 
-        location.setOnClickListener{
-            val intent = Intent().apply {
-                action = Intent.ACTION_VIEW
-                data = Uri.parse("geo:${post.coordinates.first},${post.coordinates.second}")            }
-            startActivity(intent)
-        }
+        val article = Article(
+            createDate = "1594421723",
+            authorName = "Александр Сергеевич Пушкин",
+            content = "Надев широкий боливар, Онегин едет на бульвар.",
+            likeCount = 1,
+            commentCount = 100,
+            shareCount = 67,
+            likeMe = true,
+            commentMe = false,
+            shareMe = true
+        )
+
+        post = article
+
+        initPost()
+        showMap(post)
+    }
 
 
-        createdTv.text = timing(post)
+    private fun initPost() {
+        createdTv.text = helper.timing(post)
         authorTv.text = post.authorName
         contentTv.text = post.content
-
-
         if (post.likeCount > 0) {
             likeCountTv.text = post.likeCount.toString()
             if (post.likeMe) {
@@ -54,9 +69,7 @@ class MainActivity : AppCompatActivity() {
             likeCountTv.visibility = View.GONE
         }
 
-
         likeIv.setOnClickListener {
-
             if (post.likeMe) {
                 likeIv.setImageResource(R.drawable.ic_baseline_favorite_disabled)
                 likeCountTv.setTextColor(Color.DKGRAY)
@@ -78,7 +91,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
 
         if (post.commentCount > 0) {
             commentCountTv.text = post.commentCount.toString()
@@ -102,21 +114,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun timing(post:Post): String {
-        val date = Date(post.createDate.toLong() * 1000L)
-        val sdf = SimpleDateFormat("d MMMM yyyy")
-        return when((System.currentTimeMillis()/1000) - post.createDate.toLong()) {
-            in 1..30 -> "менее минуты назад"
-            in 30..90 -> "минуту назад"
-            in 90..120 -> "две минуты назад"
-            in 120..180 -> "три минуты назад"
-            in 180..300 -> "пять минут назад"
-            in 300..600 -> "десять минут назад"
-            in 600..1800 -> "тридцать минут назад"
-            in 1800..3600 -> "час назад"
-            else -> sdf.format(date).toString()
+    private fun showMap(post: Post) {
+        if (post is PostEvent) {
+            location.visibility = View.VISIBLE
+            location.setOnClickListener {
+                val intent = Intent().apply {
+                    action = Intent.ACTION_VIEW
+                    data =
+                        Uri.parse("geo:${post.coordinates.latitude},${post.coordinates.longitude}")
+                }
+                startActivity(intent)
+            }
         }
     }
+
+
 
 }

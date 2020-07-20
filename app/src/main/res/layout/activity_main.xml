@@ -125,6 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:visibility="gone"
             android:src="@drawable/ic_baseline_location_on_24"
             app:layout_constraintEnd_toStartOf="@id/likeIv"
             app:layout_constraintTop_toBottomOf="@+id/contentTv"/>
