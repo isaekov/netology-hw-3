@@ -9,5 +9,6 @@ data class Article(
     override var shareCount: Long,
     override var likeMe: Boolean,
     override var commentMe: Boolean,
-    override var shareMe: Boolean
+    override var shareMe: Boolean,
+    var image: String
 ): Post

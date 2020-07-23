@@ -12,6 +12,7 @@ data class PostEvent(
     override var likeMe: Boolean,
     override var commentMe: Boolean,
     override var shareMe: Boolean,
+    var image: String,
     val address: String,
     val coordinates: CoordinateLocation
 ) : Post
