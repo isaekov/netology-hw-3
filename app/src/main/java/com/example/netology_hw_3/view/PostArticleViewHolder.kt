@@ -11,39 +11,18 @@ import kotlinx.android.synthetic.main.blog_item.view.*
 
 class PostArticleViewHolder(view: View) : BaseViewHolder(view) {
 
-    override fun bind(post : Post)  {
-        val requestOptions = RequestOptions()
-            .placeholder(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_background)
+    override fun bind(post: Post) {
 
         Glide.with(itemView.context)
-            .applyDefaultRequestOptions(requestOptions)
             .load(post.image)
+            .apply(RequestOptions().placeholder(R.drawable.ic_launcher_background))
             .into(itemView.avatarIv)
 
         itemView.createdTv.text = Helper.timing(post.createDate)
         itemView.authorTv.text = post.authorName
         itemView.contentTv.text = post.content
 
-        if (post.likeMe) {
-            itemView.shareIv.setImageResource(R.drawable.ic_baseline_favorite_disabled)
-            itemView.likeCountTv.setTextColor(Color.DKGRAY)
-            post.likeMe = false
-            post.likeCount --
-            itemView.likeCountTv.text = post.likeCount.toString()
-            if (post.likeCount < 1) {
-                itemView.likeCountTv.visibility = View.GONE
-            }
-        } else {
-            itemView.likeIv.setImageResource(R.drawable.ic_baseline_favorite_active)
-            itemView.likeCountTv.setTextColor(Color.RED)
-            post.likeCount ++
-            if (!itemView.likeCountTv.isShown) {
-                itemView.likeCountTv.visibility = View.VISIBLE
-            }
-            itemView.likeCountTv.text = post.likeCount.toString()
-            post.likeMe = true
-        }
+        click(post)
 
         if (post.commentCount > 0) {
             itemView.commentCountTv.text = post.commentCount.toString()
@@ -64,29 +43,30 @@ class PostArticleViewHolder(view: View) : BaseViewHolder(view) {
         } else {
             itemView.shareCountTv.visibility = View.GONE
         }
+        itemView.likeIv.setOnClickListener {
+            click(post)
+        }
     }
 
-    private fun click(post:Post, itemView:View) {
-        itemView.likeIv.setOnClickListener {
-            if (post.likeMe) {
-                itemView.likeIv.setImageResource(R.drawable.ic_baseline_favorite_disabled)
-                itemView.likeCountTv.setTextColor(Color.DKGRAY)
-                post.likeMe = false
-                post.likeCount --
-                itemView.likeCountTv.text = post.likeCount.toString()
-                if (post.likeCount < 1) {
-                    itemView.likeCountTv.visibility = View.GONE
-                }
-            } else {
-                itemView.likeIv.setImageResource(R.drawable.ic_baseline_favorite_active)
-                itemView.likeCountTv.setTextColor(Color.RED)
-                post.likeCount ++
-                if (!itemView.likeCountTv.isShown) {
-                    itemView.likeCountTv.visibility = View.VISIBLE
-                }
-                itemView.likeCountTv.text = post.likeCount.toString()
-                post.likeMe = true
+    private fun click(post: Post) {
+        if (post.likeMe) {
+            itemView.likeIv.setImageResource(R.drawable.ic_baseline_favorite_disabled)
+            itemView.likeCountTv.setTextColor(Color.DKGRAY)
+            post.likeMe = false
+            post.likeCount--
+            itemView.likeCountTv.text = post.likeCount.toString()
+            if (post.likeCount < 1) {
+                itemView.likeCountTv.visibility = View.GONE
             }
+        } else {
+            itemView.likeIv.setImageResource(R.drawable.ic_baseline_favorite_active)
+            itemView.likeCountTv.setTextColor(Color.RED)
+            post.likeCount++
+            if (!itemView.likeCountTv.isShown) {
+                itemView.likeCountTv.visibility = View.VISIBLE
+            }
+            itemView.likeCountTv.text = post.likeCount.toString()
+            post.likeMe = true
         }
     }
 }

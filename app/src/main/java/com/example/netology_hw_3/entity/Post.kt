@@ -15,6 +15,5 @@ interface Post {
     var shareMe: Boolean
     var image:String
 
-    fun identifier() = this::class.java.name.hashCode()
 
 }

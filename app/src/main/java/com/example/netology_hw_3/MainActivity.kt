@@ -40,22 +40,4 @@ class MainActivity : AppCompatActivity() {
         val data = DataSource.createDataSet()
         postAdapter.submit(data)
     }
-
-
-//    private fun showMap(post: Post) {
-//        if (post is PostEvent) {
-//            location.visibility = View.VISIBLE
-//            location.setOnClickListener {
-//                val intent = Intent().apply {
-//                    action = Intent.ACTION_VIEW
-//                    data =
-//                        Uri.parse("geo:${post.coordinates.latitude},${post.coordinates.longitude}")
-//                }
-//                startActivity(intent)
-//            }
-//        }
-//    }
-
-
-
 }

@@ -11,4 +11,6 @@ data class Article(
     override var commentMe: Boolean,
     override var shareMe: Boolean,
     override var image: String
-): Post
+): Post {
+
+}

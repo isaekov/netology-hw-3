@@ -29,7 +29,7 @@ class DataSource {
                     content = "content simple",
                     likeCount = 22,
                     commentCount = 12,
-                    shareCount = 1,
+                    shareCount = 112,
                     likeMe = true,
                     commentMe = false,
                     shareMe = false,
@@ -44,8 +44,8 @@ class DataSource {
                     content = "content simple",
                     likeCount = 2,
                     commentCount = 0,
-                    shareCount = 1,
-                    likeMe = true,
+                    shareCount = 3423,
+                    likeMe = false,
                     commentMe = false,
                     shareMe = false,
                     image = "https://picsum.photos/200"
@@ -59,7 +59,7 @@ class DataSource {
                     content = "content simple",
                     likeCount = 222,
                     commentCount = 122,
-                    shareCount = 1,
+                    shareCount = 100,
                     likeMe = true,
                     commentMe = true,
                     shareMe = false,
@@ -67,22 +67,22 @@ class DataSource {
                 )
             )
 
-//            list.add(
-//                PostEvent(
-//                    authorName = "Pushkin",
-//                    createDate = "1534234234",
-//                    content = "content simple",
-//                    likeCount = 222,
-//                    commentCount = 122,
-//                    shareCount = 1,
-//                    likeMe = true,
-//                    commentMe = true,
-//                    shareMe = false,
-//                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
-//                    address = "asdklfj",
-//                    image = "https://picsum.photos/200"
-//                )
-//            )
+            list.add(
+                PostEvent(
+                    authorName = "Pushkin",
+                    createDate = "1534234234",
+                    content = "content simple",
+                    likeCount = 222,
+                    commentCount = 122,
+                    shareCount = 1,
+                    likeMe = true,
+                    commentMe = true,
+                    shareMe = false,
+                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
+                    address = "asdklfj",
+                    image = "https://picsum.photos/200"
+                )
+            )
             return list
         }
     }

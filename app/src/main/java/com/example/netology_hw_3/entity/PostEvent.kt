@@ -15,4 +15,6 @@ data class PostEvent(
     override var image: String,
     val address: String,
     val coordinates: CoordinateLocation
-) : Post
+) : Post {
+
+}
