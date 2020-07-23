@@ -13,4 +13,8 @@ interface Post {
     var likeMe: Boolean
     var commentMe: Boolean
     var shareMe: Boolean
+    var image:String
+
+    fun identifier() = this::class.java.name.hashCode()
+
 }

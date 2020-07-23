@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initRecycler()
         add()
 
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun add() {
+    private fun add() {
         val data = DataSource.createDataSet()
         postAdapter.submit(data)
     }

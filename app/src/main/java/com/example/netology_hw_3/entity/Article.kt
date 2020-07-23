@@ -10,5 +10,5 @@ data class Article(
     override var likeMe: Boolean,
     override var commentMe: Boolean,
     override var shareMe: Boolean,
-    var image: String
+    override var image: String
 ): Post
