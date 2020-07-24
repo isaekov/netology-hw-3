@@ -19,7 +19,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -46,13 +46,13 @@
             app:layout_constraintStart_toEndOf="@+id/avatarIv"
             app:layout_constraintTop_toBottomOf="@+id/createdTv" />
 
-        <TextView
-            android:id="@+id/contentTv"
+        <ImageView
+            android:id="@+id/imageContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:textColor="#000000"
-            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/avatarIv" />
 
@@ -63,17 +63,17 @@
             android:layout_marginTop="16dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <ImageView
-            android:id="@+id/shareIv"
+            android:id="@+id/repost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_baseline_share_disabled"
             app:layout_constraintEnd_toStartOf="@+id/shareCountTv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <ImageView
             android:id="@+id/commentIv"
@@ -83,7 +83,7 @@
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_baseline_mode_comment_disabled"
             app:layout_constraintEnd_toStartOf="@+id/commentCountTv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <TextView
             android:id="@+id/commentCountTv"
@@ -92,8 +92,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="22dp"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/shareIv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintEnd_toStartOf="@+id/repost"
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <ImageView
             android:id="@+id/likeIv"
@@ -103,7 +103,7 @@
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_baseline_favorite_disabled"
             app:layout_constraintEnd_toStartOf="@+id/likeCountTv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <TextView
             android:id="@+id/likeCountTv"
@@ -113,7 +113,7 @@
             android:layout_marginEnd="22dp"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/commentIv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <ImageView
             android:id="@+id/location"
@@ -121,10 +121,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:visibility="gone"
             android:src="@drawable/ic_baseline_location_on_24"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/likeIv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -28,14 +28,14 @@ class PostAdapter(val items: List<Post>) : RecyclerView.Adapter<ViewHolder>() {
         VIEW_POST -> PostViewHolder(this, LayoutInflater.from(parent.context).inflate(
             R.layout.post_item, parent, false
         ))
-//
-//        VIEW_AD_POST -> AdPostViewHolder(this, LayoutInflater.from(parent.context).inflate(
-//            R.layout.ad_post_item, parent, false
-//        ))
-//
-//        VIEW_VIDEO_POST -> PostVideoViewHolder(this, LayoutInflater.from(parent.context).inflate(
-//            R.layout.video_post_item, parent, false
-//        ))
+
+        VIEW_AD_POST -> AdPostViewHolder(this, LayoutInflater.from(parent.context).inflate(
+            R.layout.ad_post_item, parent, false
+        ))
+
+        VIEW_VIDEO_POST -> PostVideoViewHolder(this, LayoutInflater.from(parent.context).inflate(
+            R.layout.video_post_item, parent, false
+        ))
 
         else -> throw IllegalArgumentException("Неподдерживаемый макет")
 

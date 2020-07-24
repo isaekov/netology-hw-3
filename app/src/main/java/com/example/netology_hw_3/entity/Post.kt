@@ -17,5 +17,11 @@ data class Post(
      var postType: PostType = PostType.EVENT_POST,
      val address: String? = null,
      val coordinates: CoordinateLocation? = null,
-     val post: Post? = null
+     var post: Post? = null,
+     var repostMe:Boolean = false,
+     var adSourceImage: String? = null,
+     val adHead:String? = null,
+     val adImageContent: String? = null,
+     val videoUrl: String? = null
+
 )

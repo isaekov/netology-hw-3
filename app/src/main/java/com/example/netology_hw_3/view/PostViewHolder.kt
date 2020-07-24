@@ -20,7 +20,7 @@ class PostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter,
             .into(itemView.avatarIv)
         itemView.createdTv.text = Helper.timing(post.createDate)
         itemView.authorTv.text = post.authorName
-        itemView.contentTv.text = post.content
+        itemView.imageContent.text = post.content
         click(post)
         if (post.commentCount > 0) {
             itemView.commentCountTv.text = post.commentCount.toString()
@@ -35,7 +35,7 @@ class PostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter,
         if (post.shareCount > 0) {
             itemView.shareCountTv.text = post.shareCount.toString()
             if (post.shareMe) {
-                itemView.shareIv.setImageResource(R.drawable.ic_baseline_share_active)
+                itemView.repost.setImageResource(R.drawable.ic_baseline_share_active)
                 itemView.shareCountTv.setTextColor(Color.RED)
             }
         } else {

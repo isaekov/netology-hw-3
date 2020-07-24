@@ -14,13 +14,14 @@ import kotlinx.android.synthetic.main.repost_item.view.*
 import kotlinx.android.synthetic.main.repost_item.view.authorTv
 import kotlinx.android.synthetic.main.repost_item.view.commentCountTv
 import kotlinx.android.synthetic.main.repost_item.view.commentIv
-import kotlinx.android.synthetic.main.repost_item.view.contentTv
+import kotlinx.android.synthetic.main.repost_item.view.imageContent
 import kotlinx.android.synthetic.main.repost_item.view.createdTv
 import kotlinx.android.synthetic.main.repost_item.view.likeCountTv
 import kotlinx.android.synthetic.main.repost_item.view.likeIv
-import kotlinx.android.synthetic.main.repost_item.view.shareIv
+import kotlinx.android.synthetic.main.repost_item.view.repost
 
 class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseViewHolder(adapter, view) {
+
     override fun bind(post: Post) {
         init()
         with(itemView) {
@@ -41,7 +42,8 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
             repostAuthor.text = post.post?.authorName
             itemView.createdTv.text = Helper.timing(post.createDate)
             itemView.authorTv.text = post.authorName
-            itemView.contentTv.text = """repost"""
+            itemView.imageContent.text = """repost"""
+            itemView.likeCountTv.text = post.likeCount.toString()
 
             if (post.commentCount > 0) {
                 itemView.commentCountTv.text = post.commentCount.toString()
@@ -56,7 +58,7 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
             if (post.shareCount > 0) {
                 itemView.shareCountTv.text = post.shareCount.toString()
                 if (post.shareMe) {
-                    itemView.shareIv.setImageResource(R.drawable.ic_baseline_share_active)
+                    itemView.repost.setImageResource(R.drawable.ic_baseline_share_active)
                     itemView.shareCountTv.setTextColor(Color.RED)
                 }
             } else {
@@ -67,12 +69,13 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
 
     private fun init() = with(itemView) {
         val post = adapter.items[adapterPosition]
+        initLike(post)
         likeIv.setOnClickListener {
             if (adapterPosition != RecyclerView.NO_POSITION) {
                 initLike(post)
             }
         }
-        shareIv.setOnClickListener {
+        repost.setOnClickListener {
             if (adapterPosition != RecyclerView.NO_POSITION) {
                 val intent = Intent().apply {
                     action = Intent.ACTION_SEND

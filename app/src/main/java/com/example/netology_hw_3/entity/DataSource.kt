@@ -34,7 +34,7 @@ class DataSource {
                     createDate = "1231231232",
                     authorName = "Pushkin1",
                     content = "Text",
-                    likeMe = true,
+                    likeMe = false,
                     likeCount = 123,
                     commentCount = 2,
                     commentMe = false,
@@ -64,6 +64,53 @@ class DataSource {
                     address = "Kazan",
                     coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
                     postType = PostType.POST
+
+                )
+            )
+
+            list.add(
+                Post(
+                    id = 1,
+                    createDate = "1231231232",
+                    authorName = "Pushkin2",
+                    content = "Text",
+                    likeMe = false,
+                    likeCount = 123,
+                    commentCount = 2,
+                    commentMe = false,
+                    shareCount = 1,
+                    shareMe = false,
+                    image = "https://picsum.photos/200",
+                    address = "Kazan",
+                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
+                    adHead = "Google",
+                    adSourceImage = "https://picsum.photos/200/301",
+                    adImageContent = "Lalalal",
+                    repostMe = true,
+                    postType = PostType.AD_POST
+
+                )
+            )
+
+            list.add(
+                Post(
+                    id = 1,
+                    createDate = "1231231232",
+                    authorName = "Video best",
+                    content = "Text",
+                    likeMe = false,
+                    likeCount = 123,
+                    commentCount = 2,
+                    commentMe = false,
+                    shareCount = 1,
+                    shareMe = false,
+                    image = "https://picsum.photos/200",
+                    address = "Kazan",
+                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
+                    adImageContent = "https://img.youtube.com/vi/WhWc3b3KhnY/hqdefault.jpg",
+                    repostMe = true,
+                    postType = PostType.VIDEO_POST,
+                    videoUrl = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
 
                 )
             )

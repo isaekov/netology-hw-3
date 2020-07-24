@@ -1,10 +1,7 @@
 package com.example.netology_hw_3.view
 
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.netology_hw_3.R
@@ -29,7 +26,7 @@ class PostEventViewHolder(adapter:PostAdapter, view: View) : BaseViewHolder(view
         click(postEvent)
         itemView.createdTv.text = Helper.timing(postEvent.createDate)
         itemView.authorTv.text = postEvent.authorName
-        itemView.contentTv.text = postEvent.content
+        itemView.imageContent.text = postEvent.content
 
         if (postEvent.commentCount > 0) {
             itemView.commentCountTv.text = postEvent.commentCount.toString()
@@ -44,7 +41,7 @@ class PostEventViewHolder(adapter:PostAdapter, view: View) : BaseViewHolder(view
         if (postEvent.shareCount > 0) {
             itemView.shareCountTv.text = postEvent.shareCount.toString()
             if (postEvent.shareMe) {
-                itemView.shareIv.setImageResource(R.drawable.ic_baseline_share_active)
+                itemView.repost.setImageResource(R.drawable.ic_baseline_share_active)
                 itemView.shareCountTv.setTextColor(Color.RED)
             }
         } else {

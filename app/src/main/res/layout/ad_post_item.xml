@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
@@ -14,86 +15,25 @@
         android:background="#FFFFFF"
         android:padding="16dp">
 
+
         <ImageView
-            android:id="@+id/avatarIv"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-
-        <TextView
-            android:id="@+id/createdTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textColor="#999999"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/avatarIv"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/authorTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:width="160dp"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/avatarIv"
-            app:layout_constraintTop_toBottomOf="@+id/createdTv" />
-
-        <TextView
-            android:id="@+id/contentTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:id="@+id/imageContent"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/avatarIv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageHead" />
 
-        <TextView
-            android:id="@+id/shareCountTv"
+        <ImageView
+            android:id="@+id/repost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textSize="18sp"
+            android:src="@drawable/ic_reply_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
-
-        <ImageView
-            android:id="@+id/shareIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_baseline_share_disabled"
-            app:layout_constraintEnd_toStartOf="@+id/shareCountTv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
-
-        <ImageView
-            android:id="@+id/commentIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_baseline_mode_comment_disabled"
-            app:layout_constraintEnd_toStartOf="@+id/commentCountTv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
-
-        <TextView
-            android:id="@+id/commentCountTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="22dp"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/shareIv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <ImageView
             android:id="@+id/likeIv"
@@ -103,17 +43,17 @@
             android:layout_marginEnd="8dp"
             android:src="@drawable/ic_baseline_favorite_disabled"
             app:layout_constraintEnd_toStartOf="@+id/likeCountTv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <TextView
             android:id="@+id/likeCountTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="22dp"
+            android:layout_marginEnd="32dp"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/commentIv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv" />
+            app:layout_constraintEnd_toStartOf="@+id/repost"
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <ImageView
             android:id="@+id/location"
@@ -121,10 +61,39 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:visibility="gone"
             android:src="@drawable/ic_baseline_location_on_24"
+            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/likeIv"
-            app:layout_constraintTop_toBottomOf="@+id/contentTv"/>
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
+
+        <ImageView
+            android:id="@+id/imageHead"
+            android:layout_width="65dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/imageHead"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/imageHead"
+            app:layout_constraintTop_toBottomOf="@+id/textHead" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
