@@ -18,13 +18,10 @@ class PostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter,
             .load(post.image)
             .apply(RequestOptions().placeholder(R.drawable.ic_launcher_background))
             .into(itemView.avatarIv)
-
         itemView.createdTv.text = Helper.timing(post.createDate)
         itemView.authorTv.text = post.authorName
         itemView.contentTv.text = post.content
-
         click(post)
-
         if (post.commentCount > 0) {
             itemView.commentCountTv.text = post.commentCount.toString()
             if (post.commentMe) {

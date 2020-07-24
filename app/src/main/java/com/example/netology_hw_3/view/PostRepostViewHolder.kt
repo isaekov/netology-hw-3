@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.repost_item.view.shareIv
 
 class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseViewHolder(adapter, view) {
     override fun bind(post: Post) {
+        init()
         with(itemView) {
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
@@ -34,7 +35,7 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
 
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load(post.post?.image)
+                .load(post.image)
                 .into(itemView.avatarIv)
 
             repostAuthor.text = post.post?.authorName
@@ -84,7 +85,6 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
             }
         }
     }
-
 
     private fun initLike(post: Post) {
         if (post.likeMe) {

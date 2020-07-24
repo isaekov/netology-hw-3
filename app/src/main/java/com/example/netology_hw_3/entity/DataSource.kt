@@ -21,7 +21,7 @@ class DataSource {
                     commentMe = false,
                     shareCount = 1,
                     shareMe = false,
-                    image = "https://picsum.photos/200",
+                    image = "https://picsum.photos/200/300",
                     address = "Kazan",
                     coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
                     postType = PostType.POST
@@ -62,7 +62,9 @@ class DataSource {
                     shareMe = false,
                     image = "https://picsum.photos/200",
                     address = "Kazan",
-                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343")
+                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
+                    postType = PostType.POST
+
                 )
             )
 

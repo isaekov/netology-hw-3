@@ -19,15 +19,15 @@ const val VIEW_AD_POST = 4
 class PostAdapter(val items: List<Post>) : RecyclerView.Adapter<ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder /*= when (viewType)*/ {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= when (viewType) {
 
-        /*VIEW_REPOST ->*/ return PostRepostViewHolder(this, LayoutInflater.from(parent.context).inflate(
+        VIEW_REPOST -> PostRepostViewHolder(this, LayoutInflater.from(parent.context).inflate(
             R.layout.repost_item, parent, false
         ))
 
-//        VIEW_POST -> PostViewHolder(this, LayoutInflater.from(parent.context).inflate(
-//            R.layout.post_item, parent, false
-//        ))
+        VIEW_POST -> PostViewHolder(this, LayoutInflater.from(parent.context).inflate(
+            R.layout.post_item, parent, false
+        ))
 //
 //        VIEW_AD_POST -> AdPostViewHolder(this, LayoutInflater.from(parent.context).inflate(
 //            R.layout.ad_post_item, parent, false
@@ -37,7 +37,7 @@ class PostAdapter(val items: List<Post>) : RecyclerView.Adapter<ViewHolder>() {
 //            R.layout.video_post_item, parent, false
 //        ))
 
-//        else -> throw IllegalArgumentException("Неподдерживаемый макет")
+        else -> throw IllegalArgumentException("Неподдерживаемый макет")
 
     }
 
