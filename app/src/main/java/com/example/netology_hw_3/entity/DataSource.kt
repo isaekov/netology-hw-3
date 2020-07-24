@@ -7,82 +7,65 @@ class DataSource {
         fun createDataSet(): ArrayList<Post> {
             val list = ArrayList<Post>()
 
+
+
             list.add(
-                Article(
+                Post(
+                    id = 1,
+                    createDate = "1231231232",
                     authorName = "Pushkin",
-                    createDate = "1534234234",
-                    content = "content simple",
-                    likeCount = 22,
-                    commentCount = 12,
+                    content = "Text",
+                    likeMe = true,
+                    likeCount = 123,
+                    commentCount = 2,
+                    commentMe = false,
                     shareCount = 1,
-                    likeMe = true,
-                    commentMe = false,
                     shareMe = false,
-                    image = "https://picsum.photos/200/300"
-                )
-            )
-
-            list.add(
-                Article(
-                    authorName = "Pushkin",
-                    createDate = "1534234234",
-                    content = "content simple",
-                    likeCount = 22,
-                    commentCount = 12,
-                    shareCount = 112,
-                    likeMe = true,
-                    commentMe = false,
-                    shareMe = false,
-                    image = "https://picsum.photos/200"
-                )
-            )
-
-            list.add(
-                Article(
-                    authorName = "Pushkin",
-                    createDate = "1534234234",
-                    content = "content simple",
-                    likeCount = 2,
-                    commentCount = 0,
-                    shareCount = 3423,
-                    likeMe = false,
-                    commentMe = false,
-                    shareMe = false,
-                    image = "https://picsum.photos/200"
-                )
-            )
-
-            list.add(
-                Article(
-                    authorName = "Pushkin",
-                    createDate = "1534234234",
-                    content = "content simple",
-                    likeCount = 222,
-                    commentCount = 122,
-                    shareCount = 100,
-                    likeMe = true,
-                    commentMe = true,
-                    shareMe = false,
-                    image = "https://picsum.photos/200"
-                )
-            )
-
-            list.add(
-                PostEvent(
-                    authorName = "Pushkin",
-                    createDate = "1534234234",
-                    content = "content simple",
-                    likeCount = 222,
-                    commentCount = 122,
-                    shareCount = 1,
-                    likeMe = true,
-                    commentMe = true,
-                    shareMe = false,
+                    image = "https://picsum.photos/200",
+                    address = "Kazan",
                     coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
-                    address = "asdklfj",
-                    image = "https://picsum.photos/200"
+                    postType = PostType.POST
                 )
             )
+
+            list.add(
+                Post(
+                    id = 1,
+                    createDate = "1231231232",
+                    authorName = "Pushkin1",
+                    content = "Text",
+                    likeMe = true,
+                    likeCount = 123,
+                    commentCount = 2,
+                    commentMe = false,
+                    shareCount = 1,
+                    shareMe = false,
+                    image = "https://picsum.photos/200",
+                    address = "Kazan",
+                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343"),
+                    post = list[0],
+                    postType = PostType.REPOST_POST
+                )
+            )
+
+            list.add(
+                Post(
+                    id = 1,
+                    createDate = "1231231232",
+                    authorName = "Pushkin2",
+                    content = "Text",
+                    likeMe = true,
+                    likeCount = 123,
+                    commentCount = 2,
+                    commentMe = false,
+                    shareCount = 1,
+                    shareMe = false,
+                    image = "https://picsum.photos/200",
+                    address = "Kazan",
+                    coordinates = CoordinateLocation(latitude = "123124", longitude = "3421343")
+                )
+            )
+
             return list
         }
     }

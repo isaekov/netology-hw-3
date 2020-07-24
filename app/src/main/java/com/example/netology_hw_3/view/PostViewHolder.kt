@@ -5,11 +5,12 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.netology_hw_3.R
+import com.example.netology_hw_3.adatpter.PostAdapter
 import com.example.netology_hw_3.entity.Post
 import com.example.netology_hw_3.util.Helper
-import kotlinx.android.synthetic.main.blog_item.view.*
+import kotlinx.android.synthetic.main.post_item.view.*
 
-class PostArticleViewHolder(view: View) : BaseViewHolder(view) {
+class PostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter, view) {
 
     override fun bind(post: Post) {
 

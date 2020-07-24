@@ -1,19 +1,21 @@
 package com.example.netology_hw_3.entity
 
-import android.location.Location
+import com.example.netology_hw_3.util.CoordinateLocation
 
-
-interface Post {
-    val createDate: String
-    val authorName: String
-    val content: String
-    var likeCount: Long
-    var commentCount: Long
-    var shareCount: Long
-    var likeMe: Boolean
-    var commentMe: Boolean
-    var shareMe: Boolean
-    var image:String
-
-
-}
+data class Post(
+     val id: Long,
+     val createDate: String,
+     val authorName: String,
+     val content: String,
+     var likeCount: Long,
+     var likeMe: Boolean,
+     var commentCount: Long,
+     var commentMe: Boolean,
+     var shareCount: Long,
+     var shareMe: Boolean,
+     var image: String,
+     var postType: PostType = PostType.EVENT_POST,
+     val address: String? = null,
+     val coordinates: CoordinateLocation? = null,
+     val post: Post? = null
+)

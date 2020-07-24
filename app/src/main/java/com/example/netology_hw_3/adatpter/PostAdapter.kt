@@ -5,47 +5,59 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.netology_hw_3.R
-import com.example.netology_hw_3.entity.Article
 import com.example.netology_hw_3.entity.Post
-import com.example.netology_hw_3.entity.PostEvent
-import com.example.netology_hw_3.view.PostArticleViewHolder
-import com.example.netology_hw_3.view.PostEventViewHolder
+import com.example.netology_hw_3.entity.PostType
+import com.example.netology_hw_3.view.*
 
-class PostAdapter : RecyclerView.Adapter<ViewHolder>() {
+const val VIEW_REPOST = 0
+const val VIEW_POST = 1
+const val VIEW_EVENT_POST = 2
+const val VIEW_VIDEO_POST = 3
+const val VIEW_AD_POST = 4
 
-    private var items: List<Post> = ArrayList()
 
-    fun submit(post: List<Post>) {
-        items = post
+class PostAdapter(val items: List<Post>) : RecyclerView.Adapter<ViewHolder>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder /*= when (viewType)*/ {
+
+        /*VIEW_REPOST ->*/ return PostRepostViewHolder(this, LayoutInflater.from(parent.context).inflate(
+            R.layout.repost_item, parent, false
+        ))
+
+//        VIEW_POST -> PostViewHolder(this, LayoutInflater.from(parent.context).inflate(
+//            R.layout.post_item, parent, false
+//        ))
+//
+//        VIEW_AD_POST -> AdPostViewHolder(this, LayoutInflater.from(parent.context).inflate(
+//            R.layout.ad_post_item, parent, false
+//        ))
+//
+//        VIEW_VIDEO_POST -> PostVideoViewHolder(this, LayoutInflater.from(parent.context).inflate(
+//            R.layout.video_post_item, parent, false
+//        ))
+
+//        else -> throw IllegalArgumentException("Неподдерживаемый макет")
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return when (viewType) {
-            Article::class.java.name.hashCode() ->
-                PostArticleViewHolder(inflater.inflate(R.layout.blog_item, parent, false))
-            PostEvent::class.java.name.hashCode() ->
-                PostEventViewHolder(inflater.inflate(R.layout.blog_item, parent, false))
-            else -> throw IllegalArgumentException("Unsupported layout") // in case populated with a model we don't know how to display.
-        }
-    }
+    override fun getItemId(position: Int) = items[position].id
 
 
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val post = items[position]
-        when (holder) {
-            is PostArticleViewHolder -> holder.bind(post)
-
-            is PostEventViewHolder -> holder.bind(post)
-
+        with(holder as BaseViewHolder) {
+            bind(items[position])
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return items[position]::class.java.name.hashCode()
-
+    override fun getItemViewType(position: Int) = when (items[position].postType) {
+            PostType.POST -> VIEW_POST
+            PostType.REPOST_POST -> VIEW_REPOST
+            PostType.AD_POST -> VIEW_AD_POST
+            PostType.EVENT_POST -> VIEW_EVENT_POST
+            PostType.VIDEO_POST -> VIEW_VIDEO_POST
     }
 
 
