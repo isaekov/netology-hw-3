@@ -52,8 +52,6 @@ class PostAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     }
 
-    override fun getItemId(position: Int) = items.value[position].id
-
 
     override fun getItemCount() = items.value.size
 
