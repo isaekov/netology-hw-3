@@ -45,6 +45,7 @@ class PostVideoViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(ada
 
         itemView.authorTv.text = post.authorName
         itemView.createdTv.text = Helper.timing(post.createDate)
+        itemView.vidoeContent.text = post.content
 
         if (post.repostMe) {
             itemView.repost.setImageResource(R.drawable.ic_reply_active_24)

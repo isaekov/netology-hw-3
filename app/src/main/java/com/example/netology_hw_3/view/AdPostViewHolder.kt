@@ -1,7 +1,11 @@
 package com.example.netology_hw_3.view
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.netology_hw_3.R
@@ -19,12 +23,13 @@ class AdPostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapte
             .into(itemView.imageHead)
 
         Glide.with(itemView.context)
-            .load(post.image)
+            .load(post.adImageContent)
             .apply(RequestOptions().placeholder(R.drawable.ic_launcher_background))
             .into(itemView.imageContent)
 
         itemView.textHead.text = post.adHead
         itemView.textAd.text = "Реклама"
+        itemView.adContent.text = post.content
         click(post)
 
         if (post.repostMe) {
@@ -44,6 +49,19 @@ class AdPostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapte
         }
         itemView.likeIv.setOnClickListener {
             click(post)
+        }
+
+        itemView.imageContent.setOnClickListener {
+            if (adapterPosition != RecyclerView.NO_POSITION) {
+                val intent = Intent().apply {
+                    action = Intent.ACTION_VIEW
+                    data = Uri.parse(post.videoUrl)
+                }
+
+                if (intent.resolveActivity(itemView.context.packageManager) != null) {
+                    ContextCompat.startActivity(itemView.context, intent, null)
+                }
+            }
         }
     }
 

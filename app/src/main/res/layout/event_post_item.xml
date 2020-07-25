@@ -20,7 +20,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
 
         <TextView
@@ -47,13 +47,13 @@
             app:layout_constraintStart_toEndOf="@+id/avatarIv"
             app:layout_constraintTop_toBottomOf="@+id/createdTv" />
 
-        <ImageView
+        <TextView
             android:id="@+id/imageContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#000000"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/avatarIv" />
 
@@ -121,20 +121,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             android:src="@drawable/ic_baseline_location_on_24"
-            android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/likeIv"
             app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
         <TextView
-            android:id="@+id/vidoeContent"
+            android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/imageContent"
-            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
+            app:layout_constraintBottom_toBottomOf="@+id/location"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

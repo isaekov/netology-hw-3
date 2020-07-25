@@ -42,8 +42,9 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
             repostAuthor.text = post.post?.authorName
             itemView.createdTv.text = Helper.timing(post.createDate)
             itemView.authorTv.text = post.authorName
-            itemView.imageContent.text = """repost"""
+            itemView.imageContent.text = """пересланный пост"""
             itemView.likeCountTv.text = post.likeCount.toString()
+            itemView.parentContent.text = post.post?.content
 
             if (post.commentCount > 0) {
                 itemView.commentCountTv.text = post.commentCount.toString()

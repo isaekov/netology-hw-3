@@ -19,7 +19,9 @@
         <ImageView
             android:id="@+id/imageContent"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+
             android:layout_marginTop="16dp"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -80,8 +82,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textColor="@android:color/holo_blue_dark"
             app:layout_constraintStart_toEndOf="@+id/imageHead"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,6 +97,15 @@
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/imageHead"
             app:layout_constraintTop_toBottomOf="@+id/textHead" />
+
+        <TextView
+            android:id="@+id/adContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/imageContent"
+            app:layout_constraintTop_toBottomOf="@+id/imageContent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

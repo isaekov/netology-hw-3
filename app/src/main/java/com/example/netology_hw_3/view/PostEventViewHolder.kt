@@ -1,23 +1,26 @@
 package com.example.netology_hw_3.view
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.netology_hw_3.R
 import com.example.netology_hw_3.adatpter.PostAdapter
 import com.example.netology_hw_3.entity.Post
 import com.example.netology_hw_3.util.Helper
-import kotlinx.android.synthetic.main.post_item.view.*
+import kotlinx.android.synthetic.main.event_post_item.view.*
 
-class PostEventViewHolder(adapter:PostAdapter, view: View) : BaseViewHolder(view = view, adapter = adapter) {
+class PostEventViewHolder(adapter: PostAdapter, view: View) :
+    BaseViewHolder(view = view, adapter = adapter) {
 
-    override fun bind(postEvent : Post)  {
-//        showMap(postEvent)
+    override fun bind(postEvent: Post) {
+        showMap(postEvent)
         val requestOptions = RequestOptions()
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background)
-
         Glide.with(itemView.context)
             .applyDefaultRequestOptions(requestOptions)
             .load(postEvent.image)
@@ -27,6 +30,8 @@ class PostEventViewHolder(adapter:PostAdapter, view: View) : BaseViewHolder(view
         itemView.createdTv.text = Helper.timing(postEvent.createDate)
         itemView.authorTv.text = postEvent.authorName
         itemView.imageContent.text = postEvent.content
+        itemView.address.text = postEvent.address
+
 
         if (postEvent.commentCount > 0) {
             itemView.commentCountTv.text = postEvent.commentCount.toString()
@@ -53,19 +58,20 @@ class PostEventViewHolder(adapter:PostAdapter, view: View) : BaseViewHolder(view
         }
     }
 
-//    private fun showMap(post: Post) {
-//        if (post is Post) {
-//            itemView.location.visibility = View.VISIBLE
-//            itemView.location.setOnClickListener {
-//                val intent = Intent().apply {
-//                    action = Intent.ACTION_VIEW
-//                    data =
-//                        Uri.parse("geo:${post.coordinates.latitude},${post.coordinates.longitude}")
-//                }
-//                itemView.context.startActivity(intent)
-//            }
-//        }
-//    }
+    private fun showMap(post: Post) {
+
+        if (adapterPosition != RecyclerView.NO_POSITION) {
+            itemView.location.visibility = View.VISIBLE
+            itemView.location.setOnClickListener {
+                val intent = Intent().apply {
+                    action = Intent.ACTION_VIEW
+                    data =
+                        Uri.parse("geo:${post.coordinates?.latitude},${post.coordinates?.longitude}")
+                }
+                itemView.context.startActivity(intent)
+            }
+        }
+    }
 
     private fun click(post: Post) {
         if (post.likeMe) {
@@ -89,4 +95,4 @@ class PostEventViewHolder(adapter:PostAdapter, view: View) : BaseViewHolder(view
         }
     }
 
-    }
+}
