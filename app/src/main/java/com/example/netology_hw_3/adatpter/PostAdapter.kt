@@ -15,20 +15,14 @@ import io.reactivex.rxkotlin.addTo
 
 class PostAdapter : RecyclerView.Adapter<ViewHolder>() {
 
-    internal val bag = CompositeDisposable()
+    val compositeDisposable = CompositeDisposable()
     internal var items = BehaviorRelay.createDefault(arrayListOf<Post>())
 
     init {
         items.observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                /*for (post in it) {
-                    Log.d(
-                        "dddaaa",
-                        "Object $post, id = ${post.id}, postType = ${post.postType}, source = ${post.source}"
-                    )
-                }*/
                 notifyDataSetChanged()
-            }.addTo(bag)
+            }.addTo(compositeDisposable)
     }
 
 

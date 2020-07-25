@@ -40,4 +40,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         }
     }
 
+    override fun onStop() {
+        postAdapter.compositeDisposable.clear()
+        super.onStop()
+    }
+
 }
