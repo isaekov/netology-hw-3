@@ -3,10 +3,8 @@ package com.example.netology_hw_3.view
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
-import android.provider.MediaStore
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -14,7 +12,6 @@ import com.example.netology_hw_3.R
 import com.example.netology_hw_3.adatpter.PostAdapter
 import com.example.netology_hw_3.entity.Post
 import com.example.netology_hw_3.util.Helper
-import kotlinx.android.synthetic.main.post_item.view.*
 import kotlinx.android.synthetic.main.video_post_item.view.*
 import kotlinx.android.synthetic.main.video_post_item.view.authorTv
 import kotlinx.android.synthetic.main.video_post_item.view.avatarIv
@@ -28,7 +25,7 @@ import kotlinx.android.synthetic.main.video_post_item.view.repost
 
 //https://img.youtube.com/vi/<insert-youtube-video-id-here>/0.jpg
 
-class PostVideoViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter, view) {
+class PostVideoViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(view) {
     override fun bind(post: Post) {
 
         Glide.with(itemView.context)

@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.repost_item.view.likeCountTv
 import kotlinx.android.synthetic.main.repost_item.view.likeIv
 import kotlinx.android.synthetic.main.repost_item.view.repost
 
-class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseViewHolder(adapter, view) {
+class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseViewHolder(view) {
 
     override fun bind(post: Post) {
         init()
@@ -69,7 +69,7 @@ class PostRepostViewHolder(private val adapter: PostAdapter, view: View):BaseVie
     }
 
     private fun init() = with(itemView) {
-        val post = adapter.items[adapterPosition]
+        val post = adapter.items.value[adapterPosition]
         initLike(post)
         likeIv.setOnClickListener {
             if (adapterPosition != RecyclerView.NO_POSITION) {

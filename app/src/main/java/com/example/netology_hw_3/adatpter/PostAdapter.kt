@@ -7,11 +7,29 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.netology_hw_3.R
 import com.example.netology_hw_3.entity.*
 import com.example.netology_hw_3.view.*
+import com.jakewharton.rxrelay2.BehaviorRelay
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 
 
+class PostAdapter : RecyclerView.Adapter<ViewHolder>() {
 
+    internal val bag = CompositeDisposable()
+    internal var items = BehaviorRelay.createDefault(arrayListOf<Post>())
 
-class PostAdapter(val items: List<Post>) : RecyclerView.Adapter<ViewHolder>() {
+    init {
+        items.observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                /*for (post in it) {
+                    Log.d(
+                        "dddaaa",
+                        "Object $post, id = ${post.id}, postType = ${post.postType}, source = ${post.source}"
+                    )
+                }*/
+                notifyDataSetChanged()
+            }.addTo(bag)
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)= when (viewType) {
@@ -40,18 +58,18 @@ class PostAdapter(val items: List<Post>) : RecyclerView.Adapter<ViewHolder>() {
 
     }
 
-    override fun getItemId(position: Int) = items[position].id
+    override fun getItemId(position: Int) = items.value[position].id
 
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = items.value.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder as BaseViewHolder) {
-            bind(items[position])
+            bind(items.value[position])
         }
     }
 
-    override fun getItemViewType(position: Int) = when (items[position].postType) {
+    override fun getItemViewType(position: Int) = when (items.value[position].postType) {
             PostType.POST -> POST
             PostType.REPOST_POST -> REPOST
             PostType.AD_POST -> AD_POST

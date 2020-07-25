@@ -8,8 +8,6 @@ import com.example.netology_hw_3.R
 import com.example.netology_hw_3.adatpter.PostAdapter
 import com.example.netology_hw_3.entity.Post
 import com.example.netology_hw_3.util.Helper
-import kotlinx.android.synthetic.main.event_post_item.view.*
-import kotlinx.android.synthetic.main.post_item.view.*
 import kotlinx.android.synthetic.main.post_item.view.authorTv
 import kotlinx.android.synthetic.main.post_item.view.avatarIv
 import kotlinx.android.synthetic.main.post_item.view.commentCountTv
@@ -21,7 +19,7 @@ import kotlinx.android.synthetic.main.post_item.view.likeIv
 import kotlinx.android.synthetic.main.post_item.view.repost
 import kotlinx.android.synthetic.main.post_item.view.shareCountTv
 
-class PostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter, view) {
+class PostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(view) {
 
     override fun bind(post: Post) {
 

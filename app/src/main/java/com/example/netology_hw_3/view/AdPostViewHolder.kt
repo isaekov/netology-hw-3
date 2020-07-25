@@ -13,7 +13,7 @@ import com.example.netology_hw_3.adatpter.PostAdapter
 import com.example.netology_hw_3.entity.Post
 import kotlinx.android.synthetic.main.ad_post_item.view.*
 
-class AdPostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(adapter, view) {
+class AdPostViewHolder(adapter: PostAdapter, view: View) : BaseViewHolder(view) {
 
     override fun bind(post: Post) {
 

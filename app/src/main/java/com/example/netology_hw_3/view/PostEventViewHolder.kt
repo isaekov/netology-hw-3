@@ -14,28 +14,28 @@ import com.example.netology_hw_3.util.Helper
 import kotlinx.android.synthetic.main.event_post_item.view.*
 
 class PostEventViewHolder(adapter: PostAdapter, view: View) :
-    BaseViewHolder(view = view, adapter = adapter) {
+    BaseViewHolder(view = view) {
 
-    override fun bind(postEvent: Post) {
-        showMap(postEvent)
+    override fun bind(post: Post) {
+        showMap(post)
         val requestOptions = RequestOptions()
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background)
         Glide.with(itemView.context)
             .applyDefaultRequestOptions(requestOptions)
-            .load(postEvent.image)
+            .load(post.image)
             .into(itemView.avatarIv)
 
-        click(postEvent)
-        itemView.createdTv.text = Helper.timing(postEvent.createDate)
-        itemView.authorTv.text = postEvent.authorName
-        itemView.imageContent.text = postEvent.content
-        itemView.address.text = postEvent.address
+        click(post)
+        itemView.createdTv.text = Helper.timing(post.createDate)
+        itemView.authorTv.text = post.authorName
+        itemView.imageContent.text = post.content
+        itemView.address.text = post.address
 
 
-        if (postEvent.commentCount > 0) {
-            itemView.commentCountTv.text = postEvent.commentCount.toString()
-            if (postEvent.commentMe) {
+        if (post.commentCount > 0) {
+            itemView.commentCountTv.text = post.commentCount.toString()
+            if (post.commentMe) {
                 itemView.commentIv.setImageResource(R.drawable.ic_baseline_mode_comment_active)
                 itemView.commentCountTv.setTextColor(Color.RED)
             }
@@ -43,9 +43,9 @@ class PostEventViewHolder(adapter: PostAdapter, view: View) :
             itemView.commentCountTv.visibility = View.GONE
         }
 
-        if (postEvent.shareCount > 0) {
-            itemView.shareCountTv.text = postEvent.shareCount.toString()
-            if (postEvent.shareMe) {
+        if (post.shareCount > 0) {
+            itemView.shareCountTv.text = post.shareCount.toString()
+            if (post.shareMe) {
                 itemView.repost.setImageResource(R.drawable.ic_baseline_share_active)
                 itemView.shareCountTv.setTextColor(Color.RED)
             }
@@ -54,7 +54,7 @@ class PostEventViewHolder(adapter: PostAdapter, view: View) :
         }
 
         itemView.likeIv.setOnClickListener {
-            click(postEvent)
+            click(post)
         }
     }
 
